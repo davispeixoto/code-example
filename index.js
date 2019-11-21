@@ -23,7 +23,7 @@ Animal.prototype = {
   constructor: Object,
 
   get element () {
-    if (this.element) return element
+    if (this.element) return this.element
 
     this.element = document.createElement("div")
     this.element.classList.add(this.class)
@@ -36,11 +36,15 @@ Animal.prototype = {
     return (this.element = element)
   },
 
+  setHealth: function (newValue) {
+    this.element.dataset.health = this.health = newValue
+  },
+
   feed: function () {
     this.health = this.element.dataset.health + 10
-
     if (this.health > 100) this.health = 100
-
+    this.element.dataset.health = this.health
+    
     return this.health
   },
 
