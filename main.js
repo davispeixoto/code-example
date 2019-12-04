@@ -31,20 +31,20 @@ Animal.prototype = {
     
     return this.element
   },
-  
+
   set element (element) {
     return (this.element = element)
   },
 
-  setHealth: function (newValue) {
-    this.element.dataset.health = this.health = newValue
+  setHealth: function (newValue, maxValue = 100) {
+    this.element.dataset.health = this.health = Math.min(newValue, maxValue)
   },
 
   feed: function () {
-    this.health = this.element.dataset.health + 10
-    if (this.health > 100) this.health = 100
-    this.element.dataset.health = this.health
-    
+    const oldHealth = this.health
+    this.setHealth(this.element.dataset.health + 10)
+    console.info(`${this.name} has been fed, and recovered ${this.health - oldHealth} health.`)
+
     return this.health
   },
 
