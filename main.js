@@ -37,13 +37,14 @@ Animal.prototype = {
   },
 
   setHealth: function (newValue, maxValue = 100) {
-    this.element.dataset.health = this.health = Math.min(newValue, maxValue)
+    this.health = newValue
+    if (this.health > 100) this.health = maxValue
+    this.element.dataset.health = this.health
   },
 
   feed: function () {
-    const oldHealth = this.health
     this.setHealth(this.element.dataset.health + 10)
-    console.info(`${this.name} has been fed, and recovered ${this.health - oldHealth} health.`)
+    console.info(`${this.name} has been fed, and is now at ${this.health} health.`)
 
     return this.health
   },
