@@ -1,4 +1,7 @@
 .animal {
+  width: 400xp;
   height: 100px;
   border: 3px dotted tomato;
+  margin: 2em auto;
+  backgroundcolor: rgb(255, 255, 150);
 }

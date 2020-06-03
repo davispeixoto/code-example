@@ -1,48 +1,54 @@
 class Animal {
-  constructor(name, species, className, parentElement, health = 90) {
-    this._name = name
-    this._species = species
-    this._class = className
-    this._parentElement = parentElement || document.body
-    this._health = health
+  constructor(name, species, health = 90, class, parentElement) {
+    this.name = name
+    this.species = species
+    this.class = className
+    this.parentElement = parentElement || document.body
+
+    this.bark = () => {
+      console.log(`${this.name} says woof woof!`);
+    }
 
     this.createElement()
-    this._parentElement.appendChild(this._element)
-    this._element.addEventListener("click", this.feed.bind(this))
+    this.parentElement.appendChild(this.element)
+    this.element.addEventListener("click", this.feed)
   }
 
   get element() {
-    if (this._element) return this._element
+    if (this.element) return this.element
     
-    this.createElement()
-    return this._element
+    this.element = document.createElement("div")
+    this.element.classList.add(this.class)
+    this.element.dataset.health = this.health
+
+    return this.element
   }
 
   set element(element) {
-    this._element = element
-    return this._element
+    this.element = element
+    return this.element
   }
 
   feed() {
-    this.setHealth(parseInt(this._element.dataset.health) + 10)
-    console.info(`${this._name} has been fed, and is now at ${this._health} health.`)
+    this.setHealth(this.element.dataset.health + 10)
+    console.info(`${this.name} has been fed, and is now at ${this.health} health.`)
 
-    return this._health
+    return this.health
   }
 
-  createElement() {
-    this._element = document.createElement("div")
-    this._element.classList.add(this._class)
-    this._element.dataset.health = this._health
+  createElement: function() {
+    this.element = document.createElement("div")
+    this.element.classList.add(this.class)
+    this.element.dataset.health = this.health
 
     return this
   }
 
-  setHealth(newValue, maxValue = 100) {
-    this._health = newValue
-    if (this._health > 100) this._health = maxValue
-    this._element.dataset.health = this._health
+  function setHealth(newValue, maxValue = 100) {
+    this.health = newValue
+    if (this.health > 100) this.health = maxValue
+    this.element.dataset.health = this.health
   }
 }
 
-const frankieThePug = new Animal("Frankie the Pug", "dog", "animal", document.getElementById("dogKennel"), 60);
+const frankieThePug = new Animal("Frankie the Pug", "dog", 60, "animal", document.getElementById("dogKennel"));
