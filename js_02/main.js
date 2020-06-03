@@ -6,30 +6,9 @@ class Animal {
     this._parentElement = parentElement || document.body
     this._health = health
 
-    this.feed = () => {
-      this.setHealth(parseInt(this._element.dataset.health) + 10)
-      console.info(`${this._name} has been fed, and is now at ${this._health} health.`)
-
-      return this._health
-    }
-
-    this.createElement = () => {
-      this._element = document.createElement("div")
-      this._element.classList.add(this._class)
-      this._element.dataset.health = this._health
-
-      return this
-    }
-
-    this.setHealth = (newValue, maxValue = 100) => {
-      this._health = newValue
-      if (this._health > 100) this._health = maxValue
-      this._element.dataset.health = this._health
-    }
-
     this.createElement()
     this._parentElement.appendChild(this._element)
-    this._element.addEventListener("click", this.feed)
+    this._element.addEventListener("click", this.feed.bind(this))
   }
 
   get element() {
@@ -42,6 +21,27 @@ class Animal {
   set element(element) {
     this._element = element
     return this._element
+  }
+
+  feed() {
+    this.setHealth(parseInt(this._element.dataset.health) + 10)
+    console.info(`${this._name} has been fed, and is now at ${this._health} health.`)
+
+    return this._health
+  }
+
+  createElement() {
+    this._element = document.createElement("div")
+    this._element.classList.add(this._class)
+    this._element.dataset.health = this._health
+
+    return this
+  }
+
+  setHealth(newValue, maxValue = 100) {
+    this._health = newValue
+    if (this._health > 100) this._health = maxValue
+    this._element.dataset.health = this._health
   }
 }
 
