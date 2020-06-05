@@ -18,3 +18,8 @@ $ export FLASK_APP=app.py
 $ flask run
 
 inspirado em https://dev.to/paurakhsharma/flask-rest-api-part-2-better-structure-with-blueprint-and-flask-restful-2n93
+
+https://realpython.com/invalid-syntax-python/
+https://pythonforbiologists.com/29-common-beginner-errors-on-one-page
+https://docs.python.org/3/tutorial/classes.html
+
