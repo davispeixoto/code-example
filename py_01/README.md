@@ -16,3 +16,5 @@ $ pip install Flask
 
 $ export FLASK_APP=app.py
 $ flask run
+
+inspirado em https://dev.to/paurakhsharma/flask-rest-api-part-2-better-structure-with-blueprint-and-flask-restful-2n93
