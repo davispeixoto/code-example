@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products List</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <header>
+        <h1>Produtos</h1>
+    </header>
+    <a href="/product">Adicionar produto</a>
+    <ul>
+        {% for product in products %}
+            <li><em>{{ product.name }}</em> : US$ {{ product.price }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

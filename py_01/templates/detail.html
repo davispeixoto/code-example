@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products List</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <header>
+        <h1>{{ product.name }}</h1>
+    </header>
+    <p>US$ {{ product.price }}</p>
+    <ul>
+        {% for category in product.categories %}
+            <li>{{ category }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

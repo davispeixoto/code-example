@@ -2,7 +2,7 @@ class Animal {
   constructor(name, species, health = 90, class, parentElement) {
     this.name = name
     this.species = species
-    this.class = className
+    this.class = class
     this.parentElement = parentElement || document.body
 
     this.bark = () => {

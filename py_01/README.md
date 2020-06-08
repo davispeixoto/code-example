@@ -23,3 +23,8 @@ https://realpython.com/invalid-syntax-python/
 https://pythonforbiologists.com/29-common-beginner-errors-on-one-page
 https://docs.python.org/3/tutorial/classes.html
 
+FLASK_APP = app.py
+FLASK_ENV = development
+FLASK_DEBUG = 0
+In folder ~/code-example/py_01
+~/code-example/py_01/venv/bin/python -m flask run
