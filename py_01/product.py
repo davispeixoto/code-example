@@ -8,7 +8,7 @@ class Product:
         self.categories = categories
 
     def is_valid(self):
-        if self.price > 0 and self.name:
+        if int(self.price) > 0 and self.name:
             return True
 
         return False
@@ -43,7 +43,7 @@ class ProductRepository:
 
     def create_product_from_line(self, line_data):
         data = json.loads(line_data)
-        output = Product(data.name, data.price, data.categories)
+        output = Product(data['name'], data['price'], data['categories'])
         return output
 
     def get_by_name(self, name):

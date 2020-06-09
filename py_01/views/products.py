@@ -1,19 +1,12 @@
-from flask import Flask, request, redirect
-from flask import render_template
+from manage import app
 from product import Product, ProductRepository
-
-app = Flask(__name__)
-
-@app.route('/')
-def list_products():
-    repo = ProductRepository('products.json')
-    products = repo.list()
-    return render_template('products.html', products=products)
+from flask import request, redirect
+from flask import render_template
 
 @app.route('/product', methods=['GET', 'POST'])
 def insert_product():
-    if request.method = 'POST':
-        product = Product(request.data.name, request.data.price, request.data.categories)
+    if request.method == 'POST':
+        product = Product(request.form['name'], request.form['price'], request.form['categories'])
         repo = ProductRepository('products.json')
         repo.write(product)
         return redirect('/product/'+product.name)
@@ -25,3 +18,4 @@ def get_product(name):
     repo = ProductRepository('products.json')
     product = repo.get_by_name(name)
     return render_template('detail.html', product=product)
+
