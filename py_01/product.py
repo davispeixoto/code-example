@@ -22,10 +22,10 @@ class ProductRepository:
         self.filename = filename
 
     def write(self, product):
-        writer = open(self.filename, "a+")
+        writer = open(self.filename, "a")
         try:
             if product.is_valid():
-                writer.write(product.to_json())
+                writer.write(product.to_json() + '\n')
         finally:
             writer.close()
 
