@@ -11,4 +11,3 @@ app.config['DEBUG'] = os.getenv('DEBUG') == '1'
 app.config['FLASK_ENV'] = os.getenv('FLASK_ENV')
 
 import views
-
